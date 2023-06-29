@@ -1,0 +1,22 @@
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="scriptFragment">
+  <!-- Vendor JS Files -->
+  <script th:src="@{/assets/vendor/purecounter/purecounter.js}"></script>
+  <script th:src="@{/assets/vendor/aos/aos.js}"></script>
+  <script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/assets/vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{/assets/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{/assets/vendor/waypoints/noframework.waypoints.js}"></script>
+  <script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
+  <script th:src="@{/assets/vendor/typed.js/typed.min.js}"></script>
+
+  <!-- Vendor Enlarge Image : FancyBox-->
+  <script type="text/javascript" th:src="@{/assets/vendor/fancyBox-master/lib/jquery-1.10.2.min.js}"></script>   <!-- Add jQuery library -->
+  <script type="text/javascript" th:src="@{/assets/vendor/fancyBox-master/lib/jquery.mousewheel.pack.js}"></script>  <!-- Add mousewheel plugin (this is optional) -->
+  <script type="text/javascript" th:src="@{/assets/vendor/fancyBox-master/source/jquery.fancybox.pack.js}"></script> <!-- Add fancyBox main JS files -->
+  <script type="text/javascript"> // Simple image gallery. Uses default settings
+        $(document).ready(function () { $('.fancybox').fancybox(); });
+  </script>
+</div>
+</html>

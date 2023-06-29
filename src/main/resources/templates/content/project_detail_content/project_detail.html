@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/project_detail_layout}">
+
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="style">
+  <!-- e.g. <link rel="stylesheet" th:href="@{/css/page/home.css}" > -->
+</th:block>
+
+<!-- Content -->
+<div layout:fragment="projectDetail">
+  <main id="projectDetail">
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4" style="margin-top:4vh; padding: 20px;">
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3 th:text="|🙋🏻‍♂️ ${projectItem.name}|"></h3>
+              <ul>
+                <li><strong>Period</strong>[[|: ${#strings.substring(projectItem.startDate, 0, 4)}년 ${#strings.substring(projectItem.startDate, 5, 7)}월 - ${#strings.substring(projectItem.endDate, 0, 4)}년 ${#strings.substring(projectItem.endDate, 5, 7)}월|]]</li>
+                <li><strong>Category</strong>[[|: ${projectItem.category}|]]</li>
+                <li><strong>Feature</strong>[[|: ${projectItem.feature}|]]</li><br/>
+                <p class="Hanguel" th:utext="${projectItem.longDescription}"></p>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center" style="text-align: center;">
+              <th:block th:each="projectGallery : ${projectGalleryList}" th:if="${projectGallery.extension} != 'mp4'">
+                <div class="swiper-slide">
+                  <img th:src="@{${projectGallery.mediaPath}}" alt="">
+                </div>
+              </th:block>
+              </div>
+
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <hr/>
+
+          <div class="col-lg-12">
+            <h4>📽️ 소개 영상</h4>
+            <br/>
+            <div class="d-flex flex-row justify-content-around" style="text-align: center;">
+            <th:block th:each="projectGallery : ${projectGalleryList}" th:if="${projectGallery.extension} == 'mp4'">
+              <video controls style="max-height: 46vw;">
+                <source th:src="@{${projectGallery.mediaPath}}" th:type="|video/${projectGallery.extension}|">
+                비디오가 로딩되지 않았습니다.
+              </video>
+            </th:block>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+  <!-- e.g. <script th:src="@{/js/page/home.js}"></script> -->
+</th:block>
+</html>

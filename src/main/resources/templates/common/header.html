@@ -1,0 +1,39 @@
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org">
+<!--headerFragment 선언-->
+<div th:fragment="headerFragment">
+    <header id="header" class="fixed-top desktop_view">
+        <div class="container">
+            <h5><a th:href="@{/resume}">노 동 경</a>'s</h5>
+
+            <h1 class="logo me-auto me-lg-0"><a th:href="@{/resume}">Resume</a></h1>
+
+            <a href="#profile" class="logo"><img th:src="@{assets/img/about/about.jpg}" alt="" class="img-fluid"></a>
+
+            <p  class="font-small">I'm <span class="typed" data-typed-items="good at back-end., a web developer."></span></p>
+
+            <div class="header-social-links desktop_view">
+                <a th:href="@{https://martinnoh.tistory.com/}" class="chrome" target="_blank"><i class="bx bxl-chrome"></i></a>
+                <a th:href="@{https://github.com/MartinNoh}" class="github" target="_blank" style="margin-left:30px;"><i class="bi bi-github"></i></a>
+                <a th:href="@{https://www.instagram.com/donggyeongnoh/}" class="instagram" target="_blank" style="margin-left:30px;"><i class="bi bi-instagram"></i></a>
+            </div>
+
+            <nav id="navbar" class="navbar ">
+                <ul>
+                    <li><a href="#skill">🍃 Skill List</a></li>
+                    <li><a href="#work">🧑🏻‍💻 Work Experience</a></li>
+                    <li><a href="#project">🚀 Side Project</a></li>
+                    <li><a href="#education">🎓 Education</a></li>
+                    <li><a href="#certificate">🪪 Certificate</a></li>
+                    <li><a href="#contact">✉️ Contact me</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div class="copyright font-small">
+                <div>&copy; 2023. <strong>Noh Donggyeong</strong></div>
+                <div>All rights reserved.</div>
+            </div>
+        </div>
+    </header>
+</div>
+</html>

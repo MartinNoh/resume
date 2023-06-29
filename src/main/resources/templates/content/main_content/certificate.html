@@ -1,0 +1,44 @@
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="certificateFragment">
+    <section id="certificate" class="resume">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Certificate</h2>
+                <p class="Hanguel" th:text="${certificate.description}"></p>
+            </div>
+
+            <br/>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="resume-item">
+                        <h5>2003-now</h5>
+
+                        <br/><br/>
+                        <ul class="Hanguel" th:each="certificateItem : ${certificateItemList}">
+                            <li th:text="|${certificateItem.name} (${certificateItem.institution}, ${certificateItem.acquisitionDate})|"></li>
+                        </ul>
+
+                        <br/>
+                        <div class="row">
+                            <div class="col-lg-12 resume_img">
+                                <th:block th:each="certificateItem : ${certificateItemList}">
+                                <span>
+                                    <a class="fancybox" th:href="@{${certificateItem.imagePath}}" data-fancybox-group="cert" th:title="${certificateItem.name}">
+                                        <img th:src="@{${certificateItem.imagePath}}" alt="${certificateItem.name}">
+                                    </a>
+                                </span>
+                                </th:block>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</div>
+</html>

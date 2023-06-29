@@ -1,0 +1,59 @@
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="educationFragment">
+    <section id="education" class="resume">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Education</h2>
+                <p class="Hanguel" th:text="${education.description}"></p>
+            </div>
+
+            <br/>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <th:block th:each="educationInstitute : ${educationInstituteList}">
+                    <div class="resume-item pb-0">
+                        <h5>[[${#strings.substring(educationInstitute.startDate, 0 ,4)}]] - [[${#strings.substring(educationInstitute.endDate, 0 , 4)}]]</h5>
+
+                        <br/><br/>
+                        <img th:src="@{${educationInstitute.imagePath}}" style="margin-bottom: 2.5rem; max-width:4vw"/>
+                        &nbsp;
+                        <div style="display: inline-block;">
+                            <h4 th:text="${educationInstitute.name}"></h4>
+                            <p class="Hanguel" th:text="${educationInstitute.learning}"></p>
+                        </div>
+
+                        <ul class="Hanguel" style="margin-top: -15px;" th:each="educationLearning : ${educationLearningList}" th:if="${educationLearning.educationInstitute.id == educationInstitute.id}">
+                            <li th:text="${educationLearning.course}"></li>
+
+                            <ul>
+                                <li th:if="${educationLearning.startDate != null}">[[|기간 : ${#strings.substring(educationLearning.startDate, 0, 4)}년 ${#strings.substring(educationLearning.startDate, 5, 7)}월 - ${#strings.substring(educationLearning.endDate, 0, 4)}년 ${#strings.substring(educationLearning.endDate, 5, 7)}월|]]</li>
+                                <li th:if="${educationLearning.content != null}">[[|담당 : ${educationLearning.content}|]]</li>
+                            </ul>
+                        </ul>
+
+                        <br/>
+                        <div class="row">
+                            <div class="col-lg-12 resume_img">
+                                <th:block th:each="educationGallery : ${educationGalleryList}" th:if="${educationGallery.educationInstitute.id == educationInstitute.id}">
+                                <span class="desktop_view">
+                                    <a class="fancybox" th:href="@{${educationGallery.imagePath}}" th:attr="data-fancybox-group=${educationGallery.name}" th:title="${educationGallery.name}">
+                                        <img th:src="@{${educationGallery.imagePath}}" th:alt="${educationGallery.name}">
+                                    </a>
+                                </span>
+                                </th:block>
+                            </div>
+                        </div>
+
+                        <br/><br/>
+                    </div>
+                    </th:block>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+</html>

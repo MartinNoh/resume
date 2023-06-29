@@ -1,0 +1,44 @@
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="projectFragment">
+    <section id="project" class="portfolio">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Side Project</h2>
+                <p class="Hanguel" th:utext="${project.description}"></p>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <th:block  th:each="projectItemYear : ${projectItemYearList}">
+                        <li th:attr="data-filter=|.filter-${projectItemYear}|" th:text="${projectItemYear}"></li>
+                        </th:block>
+                    </ul>
+                </div>
+            </div>
+
+            <br/><br/>
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            <th:block th:each="projectItem : ${projectItemList}">
+                <div class="col-lg-12 portfolio-item border" th:classappend="|filter-${#strings.substring(projectItem.endDate, 0 ,4)}|">
+                    <div class="portfolio-wrap">
+                        <img th:src="@{${projectItem.mainImagePath}}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4 th:text="${projectItem.name}"></h4>
+                            <p th:text="${projectItem.briefDescription}"></p>
+                            <div class="portfolio-links">
+                                <a th:href="@{/project-detail(projectItemId=${projectItem.id})}" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+            </div>
+
+        </div>
+    </section>
+</div>
+</html>
